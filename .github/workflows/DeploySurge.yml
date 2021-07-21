@@ -36,6 +36,6 @@ jobs:
       
       #Deploy to Surge
       - name: Deploying to Surge
-        run: surge ./ daniyalJsProjectsList.surge.sh --token ${ {SURGE_TOKEN} }
+        run: surge ./ daniyalJsProjectsList.surge.sh --token ${ {secrets.SURGE_TOKEN} }
 
    
