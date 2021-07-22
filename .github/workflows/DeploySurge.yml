@@ -24,11 +24,9 @@ jobs:
       
       #Setting up Node
       - name: Installing Node
-      - uses: actions/setup-node@v2
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: npm install
-      - run: test
           
       #Install surge 
       - name: Installing Surge
@@ -36,6 +34,6 @@ jobs:
       
       #Deploy to Surge
       - name: Deploying to Surge
-        run: surge ./ daniyalJsProjectsList.surge.sh --token ${ {secrets.SURGE_TOKEN} }
+        run: surge ./ daniyaljsprojectslist.surge.sh --token ${{ secrets.SURGE_TOKEN }}
 
    
