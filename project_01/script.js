@@ -18,6 +18,12 @@ function showSuccess(input_fields) {
     form_control.className += ' success';
 }
 
+//Check Email validity
+function isValidEmail(email) {
+    const RE = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return RE.test(String(email).toLowerCase());
+}
+
 //This is a event listner of form on submit
 form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -30,7 +36,10 @@ form.addEventListener('submit', function(e){
 
     if (email.value === '') {
         showError(email,'Email is Required');
-    } else {
+    } else if (!isValidEmail(email.value)) {
+        showError(email,'Not a Valid Email');
+    }
+    else {
         showSuccess(email);
     }
 
