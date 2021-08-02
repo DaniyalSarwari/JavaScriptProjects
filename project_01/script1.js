@@ -12,7 +12,7 @@ function showError(input_fields,error_message) {
     small.innerText = error_message;
 }
 
-//Function to show success
+//Function to shoe success
 function showSuccess(input_fields) {
     const form_control = input_fields.parentNode;
     form_control.className += ' success';
@@ -24,27 +24,34 @@ function isValidEmail(email) {
     return RE.test(String(email).toLowerCase());
 }
 
-//Function to check required field
-function checkRequired(inputArray) {
-    inputArray.forEach(function(input) {        
-        if (input.value === '') {
-            showError(input,`${getFieldId(input)} is required`);
-        } else {
-            showSuccess(input);
-        }
-    });
-}
-
-//Function to get field id in proper text format
-function getFieldId(inputField) {
-    const idText = inputField.id;
-    const formatedText = idText.charAt(0).toUpperCase() + idText.slice(1);    
-    return formatedText;
-}
-
 //This is a event listner of form on submit
 form.addEventListener('submit', function(e){
     e.preventDefault();
     
-    checkRequired([username,email,password,cfm_password]);
+    if (username.value === '') {
+        showError(username,'Username is Required');
+    } else {
+        showSuccess(username);
+    }
+
+    if (email.value === '') {
+        showError(email,'Email is Required');
+    } else if (!isValidEmail(email.value)) {
+        showError(email,'Not a Valid Email');
+    }
+    else {
+        showSuccess(email);
+    }
+
+    if (password.value === '') {
+        showError(password,'Password is Required');
+    } else {
+        showSuccess(password);
+    }
+
+    if (cfm_password.value === '') {
+        showError(cfm_password,'Confirm password is Required');
+    } else {
+        showSuccess(cfm_password);
+    }
 });
