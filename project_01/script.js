@@ -28,18 +28,19 @@ function isValidEmail(email) {
 function checkRequired(inputArray) {
     inputArray.forEach(function(input) {        
         if (input.value === '') {
-            showError(input,`${getFieldId(input)} is required`);
+            showError(input,`${getInputFieldLabelText(input)} is required`);
         } else {
             showSuccess(input);
         }
     });
 }
 
-//Function to get field id in proper text format
-function getFieldId(inputField) {
-    const idText = inputField.id;
-    const formatedText = idText.charAt(0).toUpperCase() + idText.slice(1);    
-    return formatedText;
+//Function to get label text that associated with input field in proper text format
+function getInputFieldLabelText(inputField) {
+    const form_control = inputField.parentNode; // getting parent node
+    const label =  form_control.querySelector('label'); //getting label element
+    const labelText = label.innerText;
+    return labelText.charAt(0).toUpperCase() + labelText.slice(1).toLowerCase();
 }
 
 //This is a event listner of form on submit
