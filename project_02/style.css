@@ -103,8 +103,23 @@ body {
 }
 .container {
     perspective: 500px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+p.text{
+    margin-bottom: 25px;
 }
 p.text span{
     color: var(--lightgreen_color);
+}
+
+.home{
+    background-color: var(--lightgrey_color);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    width: 250px;
+    font-size: 15px;
+}
+.home:hover{
+    background-color: rgb(207, 236, 253);
 }
